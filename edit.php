@@ -39,7 +39,7 @@ $mform = new edit();
 if ($mform->is_cancelled()) 
 {
     //Go back to manage.php page
-    redirect($CFG->wwwroot.'/local/message/manage.php', 'Message form was cancelled');
+    redirect($CFG->wwwroot.'/local/message/manage.php', get_string('cancelled','local_message'));
 
 } 
 else if ($fromform = $mform->get_data()) 
@@ -51,7 +51,7 @@ else if ($fromform = $mform->get_data())
 
     $DB->insert_record('local_message', $recordtoinsert);
     //Go back to manage.php page
-    redirect($CFG->wwwroot.'/local/message/manage.php', 'Message has been created: '. $fromform->messagetext);
+    redirect($CFG->wwwroot.'/local/message/manage.php', get_string('cratedmessage','local_message'). $fromform->messagetext);
 }
 echo $OUTPUT->header();
 

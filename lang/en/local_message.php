@@ -26,9 +26,6 @@ $string['cancelled'] = 'Message form was cancelled';
 $string['titlepagemanage'] = 'Manage Messages';
 $string['cratedmessage'] = 'Message has been created: ';
 $string['messagtxt'] = 'message text';
+$string['message_type'] = 'Message type: ';
 $string['enter_message'] = 'Please enter your message text';
-$string['message_type'] = 'Message type: ';
-$string['message_type'] = 'Message type: ';
-$string['message_type'] = 'Message type: ';
-$string['message_type'] = 'Message type: ';
 
