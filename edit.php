@@ -34,8 +34,6 @@ $PAGE->set_title("edit mesages");
 //zobraz form
 $mform = new edit();
 
-
-
 if ($mform->is_cancelled()) 
 {
     //Go back to manage.php page
@@ -44,12 +42,11 @@ if ($mform->is_cancelled())
 } 
 else if ($fromform = $mform->get_data()) 
 {
-    //inset data into database
-    $recordtoinsert = new stdClass();
-    $recordtoinsert->messagetext = $fromform->messagetext;
-    $recordtoinsert->messagetype = $fromform->messagetype;
 
-    $DB->insert_record('local_message', $recordtoinsert);
+    $manager = new message_manager();
+    $manager -> create_message($fromform->messagetext, $fromform->messagetype);
+
+    
     //Go back to manage.php page
     redirect($CFG->wwwroot.'/local/message/manage.php', get_string('cratedmessage','local_message'). $fromform->messagetext);
 }

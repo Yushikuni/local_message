@@ -27,23 +27,11 @@ function local_message_before_footer()
 {
     global $DB, $USER;
 
+    $manager = new message_manager();
+    $message = $manager->get_messages($USER->id);
 
 
-    //$messages = $DB->get_records('local_message');
-    $sql = "SELECT lm.id, lm.messagetext, lm.messagetype 
-            FROM {local_message} lm 
-            left JOIN {local_message_read} lmr ON lm.id = lmr.messageid 
-            WHERE lmr.userid<> :userid 
-            OR lmr.userid IS NULL";
-
-    $params = 
-    [
-        'userid' => $USER->id, 
-    ];
-
-    $messages = $DB->get_records_sql($sql, $params);
-
-    $readrecord = new stdClass();
+    
     foreach($messages as $message)
     {
         $type = \core\output\notification::NOTIFY_INFO;
@@ -62,11 +50,8 @@ function local_message_before_footer()
         }
         \core\notification::add($message->messagetext, $type);
 
-        //add read message to table reda message
-        $readrecord->messageid = $message->id;
-        $readrecord->userid = $USER->id;
-        $readrecord->timeread = time();
-        $DB->insert_record('local_message_read', $readrecord);
+        $manager->mark_message_read($message->id, $USER->id);
+
     }
     //\core\notification::error($message); //barva Cosmos
     //\core\notification::warning($message);//barva FORGET ME NOT

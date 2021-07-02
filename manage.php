@@ -26,9 +26,9 @@ require_once(__DIR__ . '/../../config.php');
 
 global $DB;
 
-$PAGE->set_url('/local/message/manage.php');
-$PAGE->set_context(\context_system::instance());
-$PAGE->set_title(get_string('titlepagemanage', 'local_message'));
+$PAGE -> set_url('/local/message/manage.php');
+$PAGE -> set_context(\context_system::instance());
+$PAGE -> set_title(get_string('titlepagemanage', 'local_message'));
 
 $messages = $DB->get_records('local_message');
 
@@ -42,4 +42,4 @@ $templatecontext = (object)
 ];
 
 echo $OUTPUT->render_from_template('local_message/manage',$templatecontext);
-echo$OUTPUT->footer();
+echo $OUTPUT->footer();
