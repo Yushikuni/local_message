@@ -30,15 +30,17 @@ $PAGE -> set_url('/local/message/manage.php');
 $PAGE -> set_context(\context_system::instance());
 $PAGE -> set_title(get_string('titlepagemanage', 'local_message'));
 
-$messages = $DB->get_records('local_message');
+$messages = $DB->get_records('local_message', null, 'id');
 
 echo $OUTPUT->header();
 
 $templatecontext = (object)
 [
-    'picurl'    => new moodle_url('/local/message/pic/hellothere.jpg'), 
-    'messages'  => array_values($messages),
-    'editurl'   => new moodle_url('/local/message/edit.php'),
+    'picurl'            => new moodle_url('/local/message/pic/hellothere.jpg'), 
+    'messages'          => array_values($messages),
+    'editurl'           => new moodle_url('/local/message/edit.php'),
+    'editmsg'           => get_string('edtmsg','local_message'),
+    'sndnextmessage'    => get_string('sndnextmessage','local_message'),
 ];
 
 echo $OUTPUT->render_from_template('local_message/manage',$templatecontext);

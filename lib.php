@@ -21,36 +21,36 @@
  * @copyright 2021 Husakova Kvetuse
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later,
  * @var stdClass $plugin
- */
+**/
+use local_message\manager;
 
 function local_message_before_footer()
 {
     global $DB, $USER;
 
-    $manager = new message_manager();
+    $manager = new manager();
     $message = $manager->get_messages($USER->id);
 
 
-    
-    foreach($messages as $message)
+    foreach($message as $m)
     {
         $type = \core\output\notification::NOTIFY_INFO;
 
-        if($message->messagetype === '0')
+        if($m->messagetype === '0')
         {
             $type = \core\output\notification::NOTIFY_WARNING;
         }
-        else if($message->messagetype === '2')
+        else if($m->messagetype === '2')
         {
             $type = \core\output\notification::NOTIFY_SUCCESS;
         }
-        else if($message->messagetype === '3')
+        else if($m->messagetype === '3')
         {
             $type = \core\output\notification::NOTIFY_ERROR;
         }
-        \core\notification::add($message->messagetext, $type);
+        \core\notification::add($m->messagetext, $type);
 
-        $manager->mark_message_read($message->id, $USER->id);
+        $manager->mark_message_read($m->id, $USER->id);
 
     }
     //\core\notification::error($message); //barva Cosmos

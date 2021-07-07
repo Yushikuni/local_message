@@ -28,4 +28,7 @@ $string['cratedmessage'] = 'Message has been created: ';
 $string['messagtxt'] = 'message text';
 $string['message_type'] = 'Message type: ';
 $string['enter_message'] = 'Please enter your message text';
+$string['updatemessage'] = 'Updated message: ';
+$string['sndnextmessage'] = 'Sand another message';
+$string['edtmsg'] = 'Edit Message';
 

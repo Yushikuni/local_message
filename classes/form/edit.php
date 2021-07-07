@@ -21,16 +21,27 @@
  * @copyright 2021 Husakova Kvetuse
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later,
  * @var stdClass $plugin
- */
+**/
+
+
+namespace local_message\form;
+
+//use local_manager\manager;
+//use local_message\form\edit;
 
 require_once("$CFG->libdir /formslib.php");
- 
-class edit extends moodleform {
+
+class edit extends \moodleform
+{
      //Add elements to form
     public function definition() {
         global $CFG;
         
         $mform = $this->_form; // Don't forget the underscore! 
+
+        $mform -> addElement('hidden','id');
+        $mform -> setType('id', PARAM_INT);
+
   
         $mform->addElement('text', 'messagetext', get_string('messagtxt','local_message')); // Add elements to your form
         $mform->setType('messagetext', PARAM_NOTAGS);                                       //Set type of element

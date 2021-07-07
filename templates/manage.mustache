@@ -38,11 +38,17 @@
 </br>
 <h1>Messages:</h1>
     {{#messages}}
-        {{messagetext}}</br>
+
+        <div class="card mt-2 mb-2">
+            <div class="card-body">
+                {{messagetext}}                 
+                <input type = "button" class = "btn btn-primary" value ="{{editmsg}}"  onclick="location.href ='{{editurl}}?messageid={{id}}'"/>
+            </div>
+        </div>
     {{/messages}}
 
-</p>
+
 
 <hr>
-    <input type="button" class="btn btn-primary" onclick="location.href='{{editurl}}'" value="Sand another message"/>
+    <input type="button" class="btn btn-primary" onclick="location.href='{{editurl}}'" value="{{sndnextmessage}}"/>
 </hr>

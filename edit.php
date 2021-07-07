@@ -21,15 +21,18 @@
  * @copyright 2021 Husakova Kvetuse
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later,
  * @var stdClass $plugin
- */
-require_once(__DIR__ . '/../../config.php');
-require_once($CFG->dirroot.'/local/message/classes/form/edit.php');
+**/
 
-global $DB;
+use local_message\form\edit;
+use local_message\manager;
+
+require_once(__DIR__ . '/../../config.php');
 
 $PAGE->set_url('/local/message/edit.php');
 $PAGE->set_context(\context_system::instance());
 $PAGE->set_title("edit mesages");
+
+$messageid = optional_param('messageid',null, PARAM_INT);
 
 //zobraz form
 $mform = new edit();
@@ -43,15 +46,35 @@ if ($mform->is_cancelled())
 else if ($fromform = $mform->get_data()) 
 {
 
-    $manager = new message_manager();
-    $manager -> create_message($fromform->messagetext, $fromform->messagetype);
-
-    
-    //Go back to manage.php page
-    redirect($CFG->wwwroot.'/local/message/manage.php', get_string('cratedmessage','local_message'). $fromform->messagetext);
+    $manager = new manager();
+     
+    if($fromform -> id)
+    {
+        //update existující zprávy
+        $manager -> update_message($fromform->id, $fromform->messagetext, $fromform->messagetype);       
+        redirect($CFG->wwwroot.'/local/message/manage.php', get_string('updatemessage','local_message'). $fromform->messagetext);
+    }
+    else
+    {
+        $manager -> create_message($fromform->messagetext, $fromform->messagetype);
+        //Go back to manage.php page
+        redirect($CFG->wwwroot.'/local/message/manage.php', get_string('cratedmessage','local_message'). $fromform->messagetext);
+    }    
 }
-echo $OUTPUT->header();
 
-$mform->display();
+if($messageid)
+{
+    $manager = new manager();
+    $message = $manager -> get_message($messageid);
+    if(!$message)
+    {
+        //throw new invalid_parametr_exception('Message not found');
+        die("Message not found");
+    }
+    $mform -> set_data($message);
+}
+echo $OUTPUT -> header();
 
-echo$OUTPUT->footer();
+$mform -> display();
+
+echo$OUTPUT -> footer();
