@@ -23,6 +23,7 @@
  * @var stdClass $plugin
 **/
 $string['cancelled'] = 'Message form was cancelled';
+$string['pluginname'] = 'Local message';
 $string['titlepagemanage'] = 'Manage Messages';
 $string['cratedmessage'] = 'Message has been created: ';
 $string['messagtxt'] = 'message text';
