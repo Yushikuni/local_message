@@ -30,25 +30,19 @@
     {
     }
 }}
-<h1>Hello there!</h1>
-<br>
-    {{texttodisplay}} <br/>
-    <img src = "{{picurl}}" alt="hello there"/>  </br>
-</br>
-</br>
-<h1>Messages:</h1>
     {{#messages}}
-
-        <div class="card mt-2 mb-2">
+        <div class="card mt-3 mb-3">
             <div class="card-body">
-                {{messagetext}}                 
+                {{messagetext}}
                 <input type = "button" class = "btn btn-primary" value ="{{editmsg}}"  onclick="location.href ='{{editurl}}?messageid={{id}}'"/>
+                <input type = "button" class = "local_message{{id}} btn btn-danger local_message_delete_button" value ="{{deltmsg}}"/>
             </div>
         </div>
     {{/messages}}
-
-
-
 <hr>
-    <input type="button" class="btn btn-primary" onclick="location.href='{{editurl}}'" value="{{sndnextmessage}}"/>
+    <input type="button" class="btn btn-primary" onclick="location.href='{{editurl}}'" value="{{sndnextmessage}}"/></br>
 </hr>
+</br>
+<h1>Hello there!</h1>{{texttodisplay}}<img src = "{{picurl}}" alt="hello there"/>  
+
+

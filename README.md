@@ -7,3 +7,7 @@
 
 ## PHP UNIT TEST
 - Fix bugs 
+
+## POPUP, AJAX and more
+- Add PopUp 
+- Add AJAX

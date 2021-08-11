@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'Local_message', language 'en', branch 'MOODLE_20_STABLE'
- *'
- * @package   Local_message
+ * edit file for component 'local_message'
+ *
+ * @package   local_message
  * @copyright 2021 Husakova Kvetuse
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later,
  * @var stdClass $plugin

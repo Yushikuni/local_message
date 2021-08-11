@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'Local_message', language 'en', branch 'MOODLE_20_STABLE'
- *'
- * @package   Local_message
+ * manage page for 'local_message'
+ *
+ * @package   local_message
  * @copyright 2021 Husakova Kvetuse
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later,
  * @var stdClass $plugin
@@ -29,6 +29,10 @@ global $DB;
 $PAGE -> set_url('/local/message/manage.php');
 $PAGE -> set_context(\context_system::instance());
 $PAGE -> set_title(get_string('titlepagemanage', 'local_message'));
+$PAGE -> set_heading(get_string('title', 'local_message'));
+
+//nacitani javaskriptu
+$PAGE->requires->js_call_amd('local_message/confirm');/*, $func, $params);*/
 
 $messages = $DB->get_records('local_message', null, 'id');
 
@@ -40,6 +44,7 @@ $templatecontext = (object)
     'messages'          => array_values($messages),
     'editurl'           => new moodle_url('/local/message/edit.php'),
     'editmsg'           => get_string('edtmsg','local_message'),
+    'deltmsg'           => get_string('deltmsg','local_message'),
     'sndnextmessage'    => get_string('sndnextmessage','local_message'),
 ];
 

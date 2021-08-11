@@ -32,4 +32,6 @@ $string['enter_message'] = 'Please enter your message text';
 $string['updatemessage'] = 'Updated message: ';
 $string['sndnextmessage'] = 'Sand another message';
 $string['edtmsg'] = 'Edit Message';
-
+$string['deltmsg'] = 'Delete Message';
+$string['title'] = 'Messages:';
+$string['deltmsg_confirm'] = 'Are sure about that?';
