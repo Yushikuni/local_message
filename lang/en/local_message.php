@@ -38,3 +38,4 @@ $string['deltmsg_confirm'] = 'Are sure about that?';
 $string['dltmsg_fail'] = 'Deleting massage has fail…';
 $string['manage'] = 'Manage broadcast messages'; 
 $string['message:managemessages'] = 'Manage messages';
+$string['plgnnamesett'] = 'Broadcast messages settings';

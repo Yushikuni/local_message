@@ -24,14 +24,16 @@
  */
 
 if($hassiteconfig){
-
-    $ADMIN->add('localplugins', new admin_category('local_message_category', get_string('pluginname', 'local_message')));
-
-    $settings = new admin_settingpage('local_message', get_string('pluginname', 'local_message'));
-    $ADMIN->add('local_message_category',$settings);
-
-
-    $settings->add(new admin_setting_configtext('local_message/option','Option','Informatiioon about this option', 100, PARAM_INT ));
-
-    $ADMIN->add('local_message_category', new admin_externalpage('local_message', get_string('manage','local_message') , $CFG->wwwroot . '/local/message/manage.php'));
+    //pridani kategorie
+    $page = new admin_category('local_message_category', get_string('pluginname', 'local_message'));
+    
+    //nastaveni pro plugin settings
+    $settings = new admin_settingpage('local_message', get_string('plgnnamesett', 'local_message'));
+    $settings->add(new admin_setting_configtext('local_message/option','Option','Informatiioon about this option', 100, PARAM_INT));
+  
+    //zobrazeni v menu
+    $ADMIN->add('localplugins',$page);                       
+    $ADMIN->add('local_message_category', new admin_externalpage('???',get_string('manage','local_message')  , $CFG->wwwroot.'/local/message/manage.php')); 
+    $ADMIN->add('local_message_category', $settings);
+    //??? -> nevim co misto '???' tak tam zustanou otazniky, lepsi nez ZULUL ne?
 }
