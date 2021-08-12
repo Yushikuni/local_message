@@ -26,6 +26,16 @@ require_once(__DIR__ . '/../../config.php');
 
 global $DB;
 
+//adminovsky pristup na stranku, nutne se prihlasit pro zobrazeni stranky (ochrana proti tomu, aby kazdy mel pristup na urcite stranky) 
+//require_admin();//-> nepotrebuju pokud kontroluju pristup pro managera
+
+//i pro prochazeni chci aby uzivatel se prihlasil
+require_login();
+
+//kontrola pro moznost pristupu bez adminovskeho loginu
+$context = context_system::instance();
+require_capability('local/message:managemessages', $context);
+
 $PAGE -> set_url('/local/message/manage.php');
 $PAGE -> set_context(\context_system::instance());
 $PAGE -> set_title(get_string('titlepagemanage', 'local_message'));

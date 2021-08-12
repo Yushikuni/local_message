@@ -124,4 +124,28 @@ class manager
         $object->messagetype = $messagetype;
         return $DB->update_record('local_message', $object);
     }
+
+    /**
+     * Delete record form database
+     * @param int $messageid unique id for delete message
+     * @return bool if delete was successfull return true
+     * @throws dml_exception
+     * @throws \dml_transaction_exception
+     */
+    public function delete_message($messageid)
+    {
+        global $DB;
+
+        $transaction = $DB->start_delegated_transaction();
+
+        $deletedMessage = $DB->delete_records('local_message', ['id' => $messageid]); 
+        $deletedMessageRead = $DB->delete_records('local_message_read', ['id' => $messageid]); 
+
+        if($deletedMessage && $deletedMessageRead)
+        {
+            $DB->commit_delegated_transaction($transaction);
+        }
+
+        return true;
+    }
 }

@@ -23,7 +23,7 @@
  * @var stdClass $plugin
 **/
 $string['cancelled'] = 'Message form was cancelled';
-$string['pluginname'] = 'Local message';
+$string['pluginname'] = 'Broadcast messages';
 $string['titlepagemanage'] = 'Manage Messages';
 $string['cratedmessage'] = 'Message has been created: ';
 $string['messagtxt'] = 'message text';
@@ -35,3 +35,6 @@ $string['edtmsg'] = 'Edit Message';
 $string['deltmsg'] = 'Delete Message';
 $string['title'] = 'Messages:';
 $string['deltmsg_confirm'] = 'Are sure about that?';
+$string['dltmsg_fail'] = 'Deleting massage has fail…';
+$string['manage'] = 'Manage broadcast messages'; 
+$string['message:managemessages'] = 'Manage messages';

@@ -9,5 +9,4 @@
 - Fix bugs 
 
 ## POPUP, AJAX and more
-- Add PopUp 
-- Add AJAX
+- Add PopUp with AJAX spinner

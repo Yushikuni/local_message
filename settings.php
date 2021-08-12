@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * version for component 'local_message', language 'en', branch 'MOODLE_20_STABLE'
+ * settings for 'local_message' plugin
  *
  * @package   local_message
  * @copyright 2021 Husakova Kvetuse
@@ -23,8 +23,15 @@
  * @var stdClass $plugin
  */
 
- defined('MOODLE_INTERNAL') || die();
- $plugin->component = 'local_message';  // Recommended since 2.0.2 (MDL-26035). Required since 3.0 (MDL-48494)
- $plugin->version = 2021060804;  // YYYYMMDDHH (year, month, day, 24-hr time)
- $plugin->requires = 2010112400; // YYYYMMDDHH (This is the release version for Moodle 2.0)
- $plugin->maturity = MATURITY_ALPHA;
+if($hassiteconfig){
+
+    $ADMIN->add('localplugins', new admin_category('local_message_category', get_string('pluginname', 'local_message')));
+
+    $settings = new admin_settingpage('local_message', get_string('pluginname', 'local_message'));
+    $ADMIN->add('local_message_category',$settings);
+
+
+    $settings->add(new admin_setting_configtext('local_message/option','Option','Informatiioon about this option', 100, PARAM_INT ));
+
+    $ADMIN->add('local_message_category', new admin_externalpage('local_message', get_string('manage','local_message') , $CFG->wwwroot . '/local/message/manage.php'));
+}

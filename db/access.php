@@ -15,16 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * version for component 'local_message', language 'en', branch 'MOODLE_20_STABLE'
+ * access page for 'local_message'
  *
+ * Manager have access to local_message 
+ * 
  * @package   local_message
  * @copyright 2021 Husakova Kvetuse
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later,
  * @var stdClass $plugin
  */
 
- defined('MOODLE_INTERNAL') || die();
- $plugin->component = 'local_message';  // Recommended since 2.0.2 (MDL-26035). Required since 3.0 (MDL-48494)
- $plugin->version = 2021060804;  // YYYYMMDDHH (year, month, day, 24-hr time)
- $plugin->requires = 2010112400; // YYYYMMDDHH (This is the release version for Moodle 2.0)
- $plugin->maturity = MATURITY_ALPHA;
+ $capabilities = [
+    'local/message:managemessages' => [
+        'riskbitmask' => RISK_SPAM,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+        ],
+    ],
+ ];
