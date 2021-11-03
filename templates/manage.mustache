@@ -34,8 +34,10 @@
         <div class="card mt-3 mb-3">
             <div class="card-body">
                 {{messagetext}}
-                <input type = "button" class = "btn btn-primary" value ="{{editmsg}}"  onclick="location.href ='{{editurl}}?messageid={{id}}'"/>
-                <input type = "button" class = "local_message{{id}} btn btn-danger local_message_delete_button" value ="{{deltmsg}}"/>
+                <span style="position: absolute; right:0px;">
+                    <input type = "button" class = "btn btn-primary" value ="{{editmsg}}"  onclick="location.href ='{{editurl}}?messageid={{id}}'"/>
+                    <input type = "button" class = "local_message{{id}} btn btn-danger local_message_delete_button" value ="{{deltmsg}}"/>
+                </span>
             </div>
         </div>
     {{/messages}}
